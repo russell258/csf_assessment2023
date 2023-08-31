@@ -1,0 +1,33 @@
+<div class="container" style="border:ridge">
+
+<h2>Share a News</h2>
+
+<form [formGroup]="postForm" (submit)="submit()">
+  <table>
+    <tr>
+      <td>Title: </td>
+      <td><input type="text" formControlName="title"></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><input type="text" formControlName="description" size="50"></td>
+    </tr>
+    <tr>
+      <td>Tags:</td>
+      <td>
+        <input type="text" formControlName="tags">
+        <button type="button" value="addTag" (click)="addTag()">+</button>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <!-- rmb add home routing later -->
+      <td>
+        <button [routerLink]="['/home']" type="button">Back</button>
+        <button type="submit">Post News</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+</div>
