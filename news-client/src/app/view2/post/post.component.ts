@@ -43,7 +43,7 @@ export class PostComponent {
     this.uploadSvc.upload(value['title'],this.imageFile,value['description'],value['tags'])
                   .then(response=>{
                     console.info('>>> response: ' + response);
-                    this.router.navigate(['upload'],{relativeTo: this.route})
+                    this.router.navigate(['/upload'],{relativeTo: this.route})
                   })
 
   }
