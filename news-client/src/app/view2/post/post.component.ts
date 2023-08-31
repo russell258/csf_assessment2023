@@ -10,18 +10,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PostComponent {
 
+  splitTags : string[] = [];
+
   //declare formgroup to hold title, photo (upload), description, tags
-  postForm!: FormGroup;
+  postForm : FormGroup = this.fb.group({
+    title: this.fb.control<string>('',[Validators.required,Validators.minLength(5)]),
+    description: this.fb.control<string>('',[Validators.required,Validators.minLength(5)]),
+    tags: this.fb.control<string[]>(this.splitTags)
+  });
 
   //declare formBuilder
   constructor(private fb: FormBuilder){}
 
   ngOninit():void{
-    this.postForm=this.fb.group({
-      title: this.fb.control<string>('',[Validators.required,Validators.minLength(5)]),
-      description: this.fb.control<string>('',[Validators.required,Validators.minLength(5)]),
-      tags: this.fb.control<string>('',[Validators.nullValidator])
-    })
+    this.postForm;
   }
 
   submit(){
@@ -29,7 +31,13 @@ export class PostComponent {
   }
 
   addTag(){
+    this.splitTags = ['hello', 'hi','pls','help','me'];
     console.log("addTag clicked");
+  }
+
+  removeTag(idx:number){
+    this.splitTags.splice(idx,1);
+    console.log("removeTag clicked "+ idx);
   }
 
 }

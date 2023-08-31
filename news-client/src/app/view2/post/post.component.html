@@ -16,15 +16,19 @@
       <td>Tags:</td>
       <td>
         <input type="text" formControlName="tags">
-        <button type="button" value="addTag" (click)="addTag()">+</button>
+        <button type="button" (click)="addTag()">+</button>
       </td>
+    </tr>
+    <tr *ngIf="splitTags.length>0">
+      <td></td>
+      <button type = "button" style="color:red" *ngFor="let i of splitTags; let idx=index" (click)="removeTag(idx)">{{i}}</button>
     </tr>
     <tr>
       <td></td>
       <!-- rmb add home routing later -->
       <td>
         <button [routerLink]="['/home']" type="button">Back</button>
-        <button type="submit">Post News</button>
+        <button type="submit" [disabled]="!postForm.valid">Post News</button>
       </td>
     </tr>
   </table>
