@@ -13,9 +13,14 @@
       <td><input type="text" formControlName="description" size="50"></td>
     </tr>
     <tr>
+      <td>Photo:</td>
+      <td><input type ="file" formControlName="photo" accept="image/*"></td>
+    </tr>
+    <tr>
       <td>Tags:</td>
       <td>
         <input type="text" #tagshtml>
+        <!-- add disabled later if can to prevent adding nothing in -->
         <button type="button" (click)="addTag(tagshtml.value)">+</button>
       </td>
     </tr>

@@ -14,9 +14,17 @@ export class PostComponent {
   @Input()
   splitTags: string[] = [];
 
+  postObject: {
+    title: string,
+    description: string,
+    splitTags: string[],
+    photo: Blob
+  }
+
   //declare formgroup to hold title, photo (upload), description, tags
   postForm : FormGroup = this.fb.group({
     title: this.fb.control<string>('',[Validators.required,Validators.minLength(5)]),
+    'photo': this.fb.control<''>,
     description: this.fb.control<string>('',[Validators.required,Validators.minLength(5)]),
     tags: this.fb.control<string[]>(this.splitTags)
   });
@@ -30,13 +38,22 @@ export class PostComponent {
 
   submit(){
     console.log("Submit function clicked");
+    console.log("image check"+ this.postForm.get("photo"));
   }
 
   addTag(tagshtml:string){
-    // this.splitTags = this.onAddTag.next($event.target.value)
+    // pass in tagshtml local reference and remove duplicates
     this.splitTags = tagshtml.split(" ");
+    this.splitTags = this.unique(this.splitTags);
     console.log("addTag clicked, split Tags are: " + this.splitTags);
   }
+
+  //function to remove duplicates from string array
+  unique(splittag: string[]) {
+    return splittag.sort().filter(function(item, pos, ary) {
+        return !pos || item != ary[pos - 1];
+    });
+}
 
   removeTag(idx:number){
     this.splitTags.splice(idx,1);
