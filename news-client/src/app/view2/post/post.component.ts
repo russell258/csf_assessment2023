@@ -16,6 +16,7 @@ export class PostComponent {
   uploadSvc = inject(UploadService);
   router = inject(Router);
   route = inject(ActivatedRoute);
+  success: boolean = false;
 
   @ViewChild('file') imageFile: ElementRef;
 
@@ -43,9 +44,26 @@ export class PostComponent {
     this.uploadSvc.upload(value['title'],this.imageFile,value['description'],value['tags'])
                   .then(response=>{
                     console.info('>>> response: ' + response);
-                    this.router.navigate(['/upload'],{relativeTo: this.route})
+                    //call function to turn boolean to true and activate ngIf
+                    this.alert(true, response);
+                    this.router.navigate(['/upload'],{relativeTo: this.route});
                   })
+                  .catch(
+                    error => {
+                      console.error('error',error);
+                      //call function to turn boolean to false and activate ngIf
+                      this.alert(false, error);
 
+                  })
+  }
+
+  alert(success: boolean, message: string){
+    this.success=success;
+    if (success){
+      //go back to View 0 home component
+      this.router.navigate(['/home']);
+    }
+    return message;
   }
 
   addTag(tagshtml:string){

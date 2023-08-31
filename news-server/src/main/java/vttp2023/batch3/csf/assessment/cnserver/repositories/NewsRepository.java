@@ -1,10 +1,7 @@
 package vttp2023.batch3.csf.assessment.cnserver.repositories;
 
 
-import java.io.File;
-
 import org.bson.Document;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
