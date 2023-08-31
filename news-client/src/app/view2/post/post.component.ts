@@ -1,6 +1,8 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, ElementRef, Input, Output, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { UploadService } from 'src/app/upload.service';
 
 //View 2 Task 1 Post News
 
@@ -11,15 +13,14 @@ import { Subject } from 'rxjs';
 })
 export class PostComponent {
 
+  uploadSvc = inject(UploadService);
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+
+  @ViewChild('file') imageFile: ElementRef;
+
   @Input()
   splitTags: string[] = [];
-
-  postObject: {
-    title: string,
-    description: string,
-    splitTags: string[],
-    photo: Blob
-  }
 
   //declare formgroup to hold title, photo (upload), description, tags
   postForm : FormGroup = this.fb.group({
@@ -38,7 +39,13 @@ export class PostComponent {
 
   submit(){
     console.log("Submit function clicked");
-    console.log("image check"+ this.postForm.get("photo"));
+    const value = this.postForm.value;
+    this.uploadSvc.upload(value['title'],this.imageFile,value['description'],value['tags'])
+                  .then(response=>{
+                    console.info('>>> response: ' + response);
+                    this.router.navigate(['upload'],{relativeTo: this.route})
+                  })
+
   }
 
   addTag(tagshtml:string){
