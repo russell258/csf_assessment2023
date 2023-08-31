@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 //View 2 Task 1 Post News
 
@@ -10,7 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PostComponent {
 
-  splitTags : string[] = [];
+  @Input()
+  splitTags: string[] = [];
 
   //declare formgroup to hold title, photo (upload), description, tags
   postForm : FormGroup = this.fb.group({
@@ -30,14 +32,16 @@ export class PostComponent {
     console.log("Submit function clicked");
   }
 
-  addTag(){
-    this.splitTags = ['hello', 'hi','pls','help','me'];
-    console.log("addTag clicked");
+  addTag(tagshtml:string){
+    // this.splitTags = this.onAddTag.next($event.target.value)
+    this.splitTags = tagshtml.split(" ");
+    console.log("addTag clicked, split Tags are: " + this.splitTags);
   }
 
   removeTag(idx:number){
     this.splitTags.splice(idx,1);
     console.log("removeTag clicked "+ idx);
+    console.log("splitTags are now: " + this.splitTags);
   }
 
 }
