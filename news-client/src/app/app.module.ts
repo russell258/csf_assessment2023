@@ -7,12 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostComponent } from './view2/post/post.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './view0/home/home.component';
+import { ListComponent } from './view1/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
-    HomeComponent
+    HomeComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

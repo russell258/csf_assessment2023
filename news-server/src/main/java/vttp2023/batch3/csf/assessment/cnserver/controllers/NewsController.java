@@ -3,8 +3,10 @@ package vttp2023.batch3.csf.assessment.cnserver.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,8 +38,24 @@ public class NewsController {
 	}
 
 	// TODO: Task 2
+	@GetMapping(path="/home")
+	public ResponseEntity<jakarta.json.JsonObject> getTags(){
+		
+		// call newsSvc and display the top ten tags
 
+		jakarta.json.JsonObject payload = Json.createObjectBuilder().build();
 
+		return ResponseEntity.ok(payload);
+	}	
 	// TODO: Task 3
+	@GetMapping(path = "/tags")
+	public ResponseEntity<jakarta.json.JsonObject> listTag(@RequestParam String tagName){
+
+		//call newsSvc and display the list of the same tag
+		jakarta.json.JsonObject payload = Json.createObjectBuilder().build();
+
+		return ResponseEntity.ok(payload);
+
+	}
 
 }

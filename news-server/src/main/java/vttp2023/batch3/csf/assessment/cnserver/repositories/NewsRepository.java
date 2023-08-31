@@ -34,12 +34,21 @@ public class NewsRepository {
 		return id;
 	}
 
-	// TODO: Task 2 
+	// TODO: Task 2  >>>> Commenting as unable to get the query
+	// 
+	// db.getCollection("tags").aggregate( [
+	//{ $group: { _id: null, uniqueCount: {$addToSet:"$tags"}}}
+	//] )
 	// Write the native Mongo query in the comment above the method
+	// public String[] listTopTenTags(String tag){
 
+		//Aggregation pipeline
+	// 	return mongo.aggregate()
+	// }
 
 	// TODO: Task 3
 	// Write the native Mongo query in the comment above the method
-
-
+	// query 
+	// use postDate in parameters to find by minutes.
+	//
 }

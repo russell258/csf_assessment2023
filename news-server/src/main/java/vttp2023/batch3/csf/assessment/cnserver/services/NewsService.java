@@ -41,6 +41,8 @@ public class NewsService {
 	// You may add any number of parameters
 	// Returns a list of tags and their associated count
 	public List<TagCount> getTags(/* Any number of parameters */) {
+		// call newsRepository method
+
 		return new LinkedList<>();
 	}
 
@@ -49,6 +51,7 @@ public class NewsService {
 	// You may add any number of parameters
 	// Returns a list of news
 	public List<News> getNewsByTag(/* Any number of parameters */) {
+		//call newsRepository Method
 		return new LinkedList<>();
 	}
 	

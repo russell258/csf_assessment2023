@@ -1,3 +1,21 @@
 <div class="container" style="border:ridge">
+  <form [formGroup]="" (submit)="list()">
+  <span>Time: </span>
+  <select name="time">
+    <option selected="selected" value="5">5 mins</option>
+    <option value="15">15 mins</option>
+    <option value="30">30 mins</option>
+    <option value="45">45 mins</option>
+    <option value="60">60 mins</option>
+    </select>
 
+  <button type="button" [routerLink]="['/post']">Post News</button>
+
+  <h1>Top Tags</h1>
+  <a [routerLink]="['/list']">Tag Example</a>
+  <!-- Comment parameterized routes Due to Error -->
+  <!-- <a [routerlink]="[/list/i]" *ngFor="let i of tagArray">{{i}}</a> -->
+
+
+  </form>
 </div>

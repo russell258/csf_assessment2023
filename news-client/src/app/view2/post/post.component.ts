@@ -16,7 +16,7 @@ export class PostComponent {
   uploadSvc = inject(UploadService);
   router = inject(Router);
   route = inject(ActivatedRoute);
-  success: boolean = false;
+  success: boolean;
 
   @ViewChild('file') imageFile: ElementRef;
 

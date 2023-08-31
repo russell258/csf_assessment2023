@@ -1,8 +1,8 @@
 <div class="container" style="border:ridge">
 
 <h2>Share a News</h2>
-<span *ngIf = "success">Success, {{alert()}}</span>
-<span *ngIf = "!success">Failed, {{alert()}}</span>
+<span style="color:green" *ngIf = "success">Alert: {{alert()}}</span>
+<span style="color:red" *ngIf = "!success">Alert: {{alert()}}</span>
 
 <form [formGroup]="postForm" (submit)="submit()">
   <table>
